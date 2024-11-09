@@ -1,0 +1,123 @@
+@import 'https://unpkg.com/@a1rth/css-normalize@1.1.3/index.css';
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Rubik', sans-serif;
+	background-color: skyblue;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	row-gap: 1.2em;
+	max-width: 300px;
+	margin: 30px;
+	padding: 20px;
+	border: 6px solid coral;
+	background-color: cornsilk;
+	border-radius: 15px;
+}
+
+input,
+button,
+fieldset,
+select,
+textarea {
+	border: 3px solid darksalmon;
+	border-radius: 5px;
+	transition-duration: 0.2s;
+}
+
+:is(input:not(.radios__control, .checkbox__control),
+	button,
+	textarea):is(:hover, :focus),
+:is(.radios__label,
+	.checkbox__label):hover {
+	background-color: wheat;
+}
+
+:is(input,
+	button,
+	select,
+	textarea):focus {
+	outline: none;
+	border-color: slateblue;
+}
+
+.field {
+	display: flex;
+	flex-direction: column;
+	margin-block: 0;
+}
+
+.field:has([required]) .field__label::after,
+.radios:has([required]) .radios__legend::after {
+	content: "*";
+	padding-inline: 0.25em;
+	color: red;
+}
+
+.field__errors {
+	display: flex;
+	flex-direction: column;
+	row-gap: 0.4em;
+	margin-top: 0.5em;
+	font-size: 0.8em;
+	color: red;
+	line-height: 1.25;
+}
+
+.field__errors:empty {
+	display: none;
+}
+
+.city-selection {
+	position: absolute;
+	bottom: 30px;
+	right: 30px;
+	display: flex;
+	flex-direction: column;
+}
+
+.radios {
+	padding: 10px;
+}
+
+.radios:has(:focus) {
+	border-color: slateblue;
+}
+
+.radios__control {
+	margin-right: 0;
+}
+
+.radios__control:first-of-type {
+	margin-left: 0;
+}
+
+.radios__label,
+.checkbox__label {
+	padding: 5px;
+	border: 2px solid transparent;
+	border-radius: 5px;
+	cursor: pointer;
+	transition-duration: 0.2s;
+}
+
+.radios__control:focus-visible+.radios__label,
+.radios__control:focus[aria-invalid="true"]+.radios__label,
+.checkbox__control:focus-visible+.checkbox__label {
+	border-color: slateblue;
+}
+
+.checkbox {
+	flex-wrap: wrap;
+	flex-direction: row;
+	column-gap: 0.25em;
+}
+
+.checkbox .field__error {
+	flex-basis: 100%;
+}
